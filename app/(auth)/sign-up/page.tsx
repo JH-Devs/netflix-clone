@@ -16,7 +16,7 @@ export default function SignUp() {
                 <Button type="submit" variant="destructive" className="w-full bg-red-500 ">Registrace</Button>
                 </div>
             </form>
-            <div className="text-gray-500 text-sm mt-2">
+            <div className="text-gray-500 text-sm mt-4">
                 Máte zde už účet? <Link href="/login" className="text-white hover:text-red-500">Přihlaste se</Link>
             </div>
             <div className="flex w-full justify-center items-center gap-x-3 mt-6">
