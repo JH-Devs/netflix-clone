@@ -1,10 +1,13 @@
-import { Button } from '@/components/ui/button'
+import { getServerSession } from 'next-auth'
+import { authOptions } from './utils/auth'
+import { redirect } from 'next/navigation';
 
-export default function Home() {
-  return (
-    <div>
-      <Button className="">Test tlačítka</Button>
-      <h1>Netflix</h1>
-    </div>
-  )
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+ 
+  if(!session) {
+    return redirect("/login");
+  } else {
+    return redirect("/home");
+  }
 }

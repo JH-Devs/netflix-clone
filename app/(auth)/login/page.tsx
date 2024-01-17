@@ -1,12 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Github } from "lucide-react";
 import Link from "next/link";
-import GoogleIcon from "@/public/images/google.svg";
-import Image from "next/image";
+import GithubSignInButton from "@/app/components/GithubSigninButton";
+import GoogleSignInButton from "@/app/components/GoogleSigninButton";
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation';
+import { authOptions } from "@/app/utils/auth";
 
 
-export default function Login() {
+export default async function Login() {
+    const session = await getServerSession(authOptions);
+
+    if(session) {
+        return redirect("/home");
+    }
+
     return (
         <div className="mt-24 rouded bg-black/70 py-10 px-6 md:mt-0 md:max-w-sm md:px-14">
             <form>
@@ -17,15 +25,11 @@ export default function Login() {
                 </div>
             </form>
             <div className="text-gray-500 text-sm mt-4">
-                Nemáte zde ještě účet? <Link href="/sign-up" className="text-white hover:text-red-500">Registrujte se</Link>
+                Nemáte zde ještě účet? <Link href="/sign-up" className="text-white hover:text-red-500">Registrace</Link>
             </div>
             <div className="flex w-full justify-center items-center gap-x-3 mt-6">
-                <Button variant="outline" size="icon">
-                    <Github className="w-4 h-4" />
-                </Button>
-                <Button variant="outline" size="icon">
-                    <Image src={GoogleIcon} alt="Google icon" className="w-6 h-6" />
-                </Button>
+                <GithubSignInButton />
+                <GoogleSignInButton />
             </div>
         </div>
     );
