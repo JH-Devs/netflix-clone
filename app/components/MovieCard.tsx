@@ -39,8 +39,8 @@ export function MovieCard({movieId, overview, title,watchList, watchListId, yout
             <h1 className="font-bold text-lg line-clamp-1">{title}</h1>
             <div className="flex gap-x-2 items-center">
                 <p>{year}</p>
-                <p>{age}</p>
-                <p>{time}</p>
+                <p>{age} +</p>
+                <p>{time} h</p>
             </div>
         </div>
 
