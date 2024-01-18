@@ -17,7 +17,7 @@ export default async function SignUp() {
     
     return (
         <div className="mt-24 rouded bg-black/70 py-10 px-6 md:mt-0 md:max-w-sm md:px-14">
-            <form>
+            <form method="post" action="/api/auth/signin">
                 <h1 className="text-3xl font-semibold text-white">Registrace</h1>
                 <div className="space-y-4 mt-5">
                 <Input type="email" name="email" placeholder="zadejte email" className="bg-neutral-700 placeholder:text-xs placeholder:text-gray-400 w-full inline-block" />
